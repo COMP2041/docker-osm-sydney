@@ -13,7 +13,6 @@ RUN apt-get update &&\
     dpkg-reconfigure tzdata &&\
     rm -rf /var/lib/apt/lists/*
 
-add /entrypoint entrypoint
 USER postgres
 
 RUN sed -i "s/\#listen_addresses = 'localhost'/listen_addresses = '\*'/g" /etc/postgresql/9.4/main/postgresql.conf &&\
@@ -31,6 +30,7 @@ RUN sed -i "s/\#listen_addresses = 'localhost'/listen_addresses = '\*'/g" /etc/p
 	
 EXPOSE 5432
 
+add /entrypoint entrypoint
 ENTRYPOINT ["/entrypoint"]
 
 # start by
