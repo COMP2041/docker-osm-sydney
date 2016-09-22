@@ -17,7 +17,7 @@ USER postgres
 
 RUN sed -i "s/\#listen_addresses = 'localhost'/listen_addresses = '\*'/g" /etc/postgresql/9.4/main/postgresql.conf &&\
 	echo "host all all 172.16.0.0/12 trust" >> /etc/postgresql/9.4/main/pg_hba.conf &&\
-	sed -i 's/md5$/trust/'  >> /etc/postgresql/9.4/main/pg_hba.conf &&\
+	sed -i 's/md5$/trust/'  /etc/postgresql/9.4/main/pg_hba.conf &&\
 	service postgresql start &&\
 	psql -U postgres -c "ALTER USER postgres with password 'postgres';" &&\
     createdb -O postgres osm_sydney &&\
