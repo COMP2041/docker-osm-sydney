@@ -7,7 +7,7 @@ RUN apt-get update &&\
     apt-get install -y --no-install-recommends locales &&\
     localedef -i en_AU -c -f UTF-8 -A /usr/share/locale/locale.alias en_AU.UTF-8 &&\
     apt-get install -y --no-install-recommends \
-        wget unzip ca-certificates net-tools \
+        wget unzip ca-certificates y\
         osm2pgsql postgresql postgresql-9.4-postgis &&\
     echo "Australia/Sydney" > /etc/timezone &&\
     dpkg-reconfigure tzdata &&\
@@ -31,7 +31,7 @@ RUN sed -i "s/\#listen_addresses = 'localhost'/listen_addresses = '\*'/g" /etc/p
     
 EXPOSE 5432
 
-add /entrypoint entrypoint
+ADD /entrypoint entrypoint
 ENTRYPOINT ["/entrypoint"]
 
 # start by
