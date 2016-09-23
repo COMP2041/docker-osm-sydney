@@ -7,7 +7,7 @@ RUN apt-get update &&\
     apt-get install -y --no-install-recommends locales &&\
     localedef -i en_AU -c -f UTF-8 -A /usr/share/locale/locale.alias en_AU.UTF-8 &&\
     apt-get install -y --no-install-recommends \
-        wget unzip ca-certificates \
+        wget unzip ca-certificates net-tools \
         osm2pgsql postgresql postgresql-9.4-postgis &&\
     echo "Australia/Sydney" > /etc/timezone &&\
     dpkg-reconfigure tzdata &&\
@@ -16,10 +16,10 @@ RUN apt-get update &&\
 USER postgres
 
 RUN sed -i "s/\#listen_addresses = 'localhost'/listen_addresses = '\*'/g" /etc/postgresql/9.4/main/postgresql.conf &&\
-    echo "host all all 172.16.0.0/12 trust" >> /etc/postgresql/*/main/pg_hba.conf &&\
-    sed -i 's/md5$/trust/'  /etc/postgresql/*/main/pg_hba.conf &&\
+    echo "host all all 172.16.0.0/12 trust" >> /etc/postgresql/9.4/main/pg_hba.conf &&\
+    sed -i 's/md5$/trust/'  /etc/postgresql/9.4/main/pg_hba.conf &&\
     service postgresql start &&\
-    ln -s /var/log/postgresql/postgresql-*-main.log /dev/stdout  &&\
+    ln -sf /dev/stdout /var/log/postgresql/postgresql-9.4-main.log  &&\
     psql -U postgres -c "ALTER USER postgres with password 'postgres';" &&\
     createdb -O postgres osm_sydney &&\
     cd /tmp &&\
