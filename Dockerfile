@@ -7,7 +7,7 @@ RUN apt-get update &&\
     apt-get install -y --no-install-recommends locales &&\
     localedef -i en_AU -c -f UTF-8 -A /usr/share/locale/locale.alias en_AU.UTF-8 &&\
     apt-get install -y --no-install-recommends \
-        wget unzip ca-certificates y\
+        wget unzip ca-certificates \
         osm2pgsql postgresql postgresql-9.4-postgis &&\
     echo "Australia/Sydney" > /etc/timezone &&\
     dpkg-reconfigure tzdata &&\
