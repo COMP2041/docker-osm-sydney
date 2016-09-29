@@ -35,5 +35,5 @@ ADD /entrypoint entrypoint
 ENTRYPOINT ["/entrypoint"]
 
 # start by
-# docker run -p 5243:5243 comp2041/osm
-# docker run comp2041/osm psql -h 127.0.0.1 -U postgres osm_sydney --command "select name, place, ST_X(ST_Transform(way, 4326)), ST_X (ST_Transform(way, 4326)) from planet_osm_point where shop='supermarket' order by name;"
+# docker run -p 5243:5243 comp2041/osm-sydney
+# docker run comp2041/osm-sydney psql -h 127.0.0.1 -U postgres osm_sydney --command "select name, place, ST_X(ST_Transform(way, 4326)), ST_X (ST_Transform(way, 4326)) from planet_osm_point where shop='supermarket' order by name;"
