@@ -1,16 +1,8 @@
-All the tools & scripts needed for [COMP2041/COMP9041](http://cse.unsw.edu.au/~cs2041) including:
-
-* bash
-* perl
-* python 2 & 3
-* git
-* miscellaneous utils (wget curl id3 time vim ssh imagemagick)
-* autotest scripts for labs & assignments
-* give
+Postgres server populated with [Open Street Map Data for Sydney](https://mapzen.com/data/metro-extracts/metro/sydney_australia/)
 
 Start like this:
 
-`docker run -p 5243:5243 comp2041/osm`
+`docker run -p 5243:5243 comp2041/osm-sydney`
 
 then access by  db client, for example run this in another window to print all sydney supermarkets:
 
